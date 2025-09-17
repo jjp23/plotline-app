@@ -1,0 +1,95 @@
+.search-page {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  .search-page h1 {
+    text-align: center;
+    color: #708238;
+    margin-bottom: 1rem;
+  }
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .search-form input {
+    padding: 0.6rem;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .search-form button {
+    padding: 0.6rem 1rem;
+    background: #708238;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .search-form button:hover {
+    background: #556b2f;
+  }
+  
+  .search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .search-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .search-card img {
+    width: 100px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-card h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .search-card p {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-card button {
+    background: #708238;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-card button:hover {
+    background: #556b2f;
+  }
+  
+  .placeholder {
+    width: 100px;
+    height: 150px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem auto;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #666;
+  }
+  

@@ -1,0 +1,23 @@
+.about-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #708238; /* olive accent */
+    font-family: "Georgia", serif;
+  }
+  
+  .about-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: #333;
+  }
+  
