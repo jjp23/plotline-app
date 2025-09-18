@@ -38,6 +38,7 @@ function Register() {
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
           required
         />
         <input
@@ -45,6 +46,7 @@ function Register() {
           placeholder="Choose a password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="new-password"
           required
         />
         <button type="submit">Register</button>
