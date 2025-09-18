@@ -13,6 +13,10 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
+app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", message: "Backend is running 🚀" });
+  });
+
 connectDB();
 
 export default app;
