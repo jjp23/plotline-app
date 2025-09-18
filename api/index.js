@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 
+console.log("MONGO_URI is:", process.env.MONGO_URI);
 dotenv.config();
 const app = express();
 
