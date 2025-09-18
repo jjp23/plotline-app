@@ -91,8 +91,10 @@ function Profile() {
 
   return (
     <div className="profile">
-      <h1>{user?.name}’s Profile</h1>
-      <p>{user?.email}</p>
+      <div className="profile-header">
+        <h1>{user?.name}’s Profile</h1>
+        <p>{user?.email}</p>
+      </div>
 
       {[
         { title: "Want To Read", list: wantToRead, from: "want" },
