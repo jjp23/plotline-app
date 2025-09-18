@@ -17,6 +17,9 @@ app.get("/api/health", (req, res) => {
     res.json({ status: "ok", message: "Backend is running 🚀" });
   });
 
+console.log("MONGO_URI exists:", !!process.env.MONGO_URI);
+console.log("JWT_SECRET exists:", !!process.env.JWT_SECRET);  
+
 connectDB();
 
 export default app;
