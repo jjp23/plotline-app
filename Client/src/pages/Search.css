@@ -18,12 +18,13 @@
   align-items: center;
   gap: 1rem;
   margin: 2rem auto 3rem auto;
-  max-width: 700px;
+  max-width: 900px; /* make it wider */
 }
 
 .search-form input {
   flex: 1;
-  padding: 0.8rem 1rem;
+  min-width: 500px;   /* ensure longer bar */
+  padding: 0.9rem 1.2rem;
   font-size: 1.1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -36,7 +37,7 @@
 }
 
 .search-form button {
-  padding: 0.8rem 1.5rem;
+  padding: 0.9rem 1.5rem;
   font-size: 1.1rem;
   background: #708238;
   color: white;
