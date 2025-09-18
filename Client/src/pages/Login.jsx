@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -24,13 +24,12 @@ function Login() {
     <div className="form-container">
       <h1>Login</h1>
       {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-sm">
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
           required
         />
         <input
@@ -38,15 +37,16 @@ function Login() {
           placeholder="Your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
           required
         />
-        <button type="submit" className="bg-blue-600 text-white p-2 rounded">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
+      <p className="switch-auth">
+        Don’t have an account? <Link to="/register">Register here</Link>
+      </p>
     </div>
   );
 }
 
 export default Login;
+

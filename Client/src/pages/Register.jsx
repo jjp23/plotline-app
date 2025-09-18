@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
 
 function Register() {
@@ -25,13 +25,12 @@ function Register() {
     <div className="form-container">
       <h1>Create Account</h1>
       {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-sm">
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Full name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="border p-2 rounded"
           required
         />
         <input
@@ -39,7 +38,6 @@ function Register() {
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
           required
         />
         <input
@@ -47,15 +45,16 @@ function Register() {
           placeholder="Choose a password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
           required
         />
-        <button type="submit" className="bg-green-600 text-white p-2 rounded">
-          Register
-        </button>
+        <button type="submit">Register</button>
       </form>
+      <p className="switch-auth">
+        Already have an account? <Link to="/login">Login here</Link>
+      </p>
     </div>
   );
 }
 
 export default Register;
+

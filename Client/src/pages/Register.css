@@ -54,4 +54,20 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+.switch-auth {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.switch-auth a {
+  color: #708238;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.switch-auth a:hover {
+  text-decoration: underline;
+}
+
   
