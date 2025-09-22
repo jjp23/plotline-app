@@ -19,7 +19,7 @@ function authMiddleware(req, res, next) {
 
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.userId).select("-password");
+    const user = await User.findById(req.userId).select("-password").populate("friends", "name email");
     res.json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -33,7 +33,45 @@ router.post("/", authMiddleware, async (req, res) => {
       req.userId,
       { wantToRead, currentlyReading, finished },
       { new: true }
-    ).select("-password");
+    )
+      .select("-password")
+      .populate("friends", "name email");
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.post("/:id/add-friend", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    const friend = await User.findById(req.params.id);
+
+    if (!friend) return res.status(404).json({ message: "User not found" });
+
+    if (!user.friends.includes(friend._id)) {
+      user.friends.push(friend._id);
+      await user.save();
+    }
+
+    const populatedUser = await User.findById(req.userId)
+      .select("-password")
+      .populate("friends", "name email");
+
+    res.json({ message: "Friend added", friends: populatedUser.friends });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.get("/:id/profile", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+      .select("-password")
+      .populate("friends", "name email");
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
     res.json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });

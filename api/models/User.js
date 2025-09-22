@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     wantToRead: [{ title: String, author: String, coverId: Number }],
     currentlyReading: [{ title: String, author: String, coverId: Number }],
-    finished: [{ title: String, author: String, coverId: Number }]
+    finished: [{ title: String, author: String, coverId: Number }],
+    friends: [{type: mongoose.Schema.Types.ObjectId, ref:"User"}]
   },
   { timestamps: true }
 );
