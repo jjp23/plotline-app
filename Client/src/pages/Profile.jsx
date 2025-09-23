@@ -9,7 +9,11 @@ function Profile() {
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [menuBook, setMenuBook] = useState(null);
-  const [activeTab, setActiveTab] = useState("books"); // 👈 new state for tabs
+  const [activeTab, setActiveTab] = useState("books");
+
+  const [reviewingBook, setReviewingBook] = useState(null);
+  const [reviewText, setReviewText] = useState("");
+  const [rating, setRating] = useState(0);
 
   const API_URL = import.meta.env.VITE_API_URL || "https://plotline-app.vercel.app/api";
 
@@ -99,6 +103,24 @@ function Profile() {
     setMenuBook(null);
   };
 
+  const saveReview = (book) => {
+    const updatedFinished = profileData.finished.map((b) =>
+      b === book ? { ...b, review: reviewText, rating } : b
+    );
+
+    const updatedProfile = {
+      ...profileData,
+      finished: updatedFinished,
+    };
+
+    setProfileData(updatedProfile);
+    saveProfile(updatedProfile);
+
+    setReviewingBook(null);
+    setReviewText("");
+    setRating(0);
+  };
+
   if (loading) return <p>Loading profile...</p>;
   if (!profileData) return <p>No profile found.</p>;
 
@@ -148,12 +170,57 @@ function Profile() {
                       ) : (
                         <div className="placeholder">No Cover</div>
                       )}
+
+                      {/* Show menu for moving/removing */}
                       {!id && menuBook && menuBook.book === book && (
                         <div className="book-menu">
                           <button onClick={() => moveBook(book, from, "want")}>Move to Want To Read</button>
                           <button onClick={() => moveBook(book, from, "reading")}>Move to Currently Reading</button>
                           <button onClick={() => moveBook(book, from, "finished")}>Move to Finished</button>
                           <button onClick={() => removeBook(book, from)}>Remove</button>
+                        </div>
+                      )}
+
+                      {/* 📖 Reviews only for Finished list */}
+                      {from === "finished" && (
+                        <div className="review-section">
+                          {/* Display saved review */}
+                          {book.review && (
+                            <div className="book-review">
+                              <p><strong>Rating:</strong> {book.rating}/5</p>
+                              <p>{book.review}</p>
+                            </div>
+                          )}
+
+                          {/* Add/Edit review */}
+                          {!id && reviewingBook === book && (
+                            <div className="review-form">
+                              <textarea
+                                placeholder="Write your review..."
+                                value={reviewText}
+                                onChange={(e) => setReviewText(e.target.value)}
+                              />
+                              <select
+                                value={rating}
+                                onChange={(e) => setRating(Number(e.target.value))}
+                              >
+                                <option value={0}>Select rating</option>
+                                {[1, 2, 3, 4, 5].map((n) => (
+                                  <option key={n} value={n}>
+                                    {n}
+                                  </option>
+                                ))}
+                              </select>
+                              <button onClick={() => saveReview(book)}>Save Review</button>
+                              <button onClick={() => setReviewingBook(null)}>Cancel</button>
+                            </div>
+                          )}
+
+                          {!id && (
+                            <button onClick={() => setReviewingBook(book)}>
+                              {book.review ? "Edit Review" : "Add Review"}
+                            </button>
+                          )}
                         </div>
                       )}
                     </div>

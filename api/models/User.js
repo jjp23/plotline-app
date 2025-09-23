@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
 
+const bookSchema = new mongoose.Schema({
+  title: String,
+  author: String,
+  coverId: Number,
+  review: String,        
+  rating: {              
+    type: Number,
+    min: 1,
+    max: 5
+  }
+});
+
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
