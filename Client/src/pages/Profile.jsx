@@ -5,10 +5,11 @@ import "./Profile.css";
 
 function Profile() {
   const { user } = useAuth();
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [menuBook, setMenuBook] = useState(null);
+  const [activeTab, setActiveTab] = useState("books"); // 👈 new state for tabs
 
   const API_URL = import.meta.env.VITE_API_URL || "https://plotline-app.vercel.app/api";
 
@@ -35,7 +36,7 @@ function Profile() {
   }, [user, id]);
 
   async function saveProfile(updatedData) {
-    if (id) return; 
+    if (id) return;
     try {
       await fetch(`${API_URL}/profile`, {
         method: "POST",
@@ -108,59 +109,81 @@ function Profile() {
         <p>{profileData.email}</p>
       </div>
 
-      {/* Friends Section */}
-      <div className="friends">
-        <h2>Friends</h2>
-        {profileData.friends && profileData.friends.length > 0 ? (
-          <ul>
-            {profileData.friends.map((friend) => (
-              <li key={friend._id}>
-                <Link to={`/profile/${friend._id}`}>{friend.name}</Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No friends yet</p>
-        )}
+      {/* 🔖 Tabs */}
+      <div className="profile-tabs">
+        <button
+          className={`profile-tab ${activeTab === "books" ? "active" : ""}`}
+          onClick={() => setActiveTab("books")}
+        >
+          Books
+        </button>
+        <button
+          className={`profile-tab ${activeTab === "friends" ? "active" : ""}`}
+          onClick={() => setActiveTab("friends")}
+        >
+          Friends
+        </button>
       </div>
 
-      {/* Book Lists */}
-      {[
-        { title: "Want To Read", list: profileData.wantToRead, from: "want" },
-        { title: "Currently Reading", list: profileData.currentlyReading, from: "reading" },
-        { title: "Finished", list: profileData.finished, from: "finished" },
-      ].map(({ title, list, from }) => (
-        <div key={from} className="list">
-          <h2>{title}</h2>
-          <div className="book-grid">
-            {list.length > 0 ? (
-              list.map((book, i) => (
-                <div key={i} className="book-item">
-                  {book.coverId ? (
-                    <img
-                      src={`https://covers.openlibrary.org/b/id/${book.coverId}-M.jpg`}
-                      alt={book.title}
-                      onClick={() => !id && setMenuBook({ book, from })} 
-                    />
-                  ) : (
-                    <div className="placeholder">No Cover</div>
-                  )}
-                  {!id && menuBook && menuBook.book === book && (
-                    <div className="book-menu">
-                      <button onClick={() => moveBook(book, from, "want")}>Move to Want To Read</button>
-                      <button onClick={() => moveBook(book, from, "reading")}>Move to Currently Reading</button>
-                      <button onClick={() => moveBook(book, from, "finished")}>Move to Finished</button>
-                      <button onClick={() => removeBook(book, from)}>Remove</button>
+      {/* 📚 Books Tab */}
+      {activeTab === "books" && (
+        <>
+          {[
+            { title: "Want To Read", list: profileData.wantToRead, from: "want" },
+            { title: "Currently Reading", list: profileData.currentlyReading, from: "reading" },
+            { title: "Finished", list: profileData.finished, from: "finished" },
+          ].map(({ title, list, from }) => (
+            <div key={from} className="list">
+              <h2>{title}</h2>
+              <div className="book-grid">
+                {list.length > 0 ? (
+                  list.map((book, i) => (
+                    <div key={i} className="book-item">
+                      {book.coverId ? (
+                        <img
+                          src={`https://covers.openlibrary.org/b/id/${book.coverId}-M.jpg`}
+                          alt={book.title}
+                          onClick={() => !id && setMenuBook({ book, from })}
+                        />
+                      ) : (
+                        <div className="placeholder">No Cover</div>
+                      )}
+                      {!id && menuBook && menuBook.book === book && (
+                        <div className="book-menu">
+                          <button onClick={() => moveBook(book, from, "want")}>Move to Want To Read</button>
+                          <button onClick={() => moveBook(book, from, "reading")}>Move to Currently Reading</button>
+                          <button onClick={() => moveBook(book, from, "finished")}>Move to Finished</button>
+                          <button onClick={() => removeBook(book, from)}>Remove</button>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              ))
-            ) : (
-              <p>No books yet</p>
-            )}
-          </div>
+                  ))
+                ) : (
+                  <p>No books yet</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* 👥 Friends Tab */}
+      {activeTab === "friends" && (
+        <div className="friends">
+          <h2>Friends</h2>
+          {profileData.friends && profileData.friends.length > 0 ? (
+            <ul>
+              {profileData.friends.map((friend) => (
+                <li key={friend._id}>
+                  <Link to={`/profile/${friend._id}`}>{friend.name}</Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No friends yet</p>
+          )}
         </div>
-      ))}
+      )}
     </div>
   );
 }
