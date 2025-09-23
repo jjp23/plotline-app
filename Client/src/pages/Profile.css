@@ -7,6 +7,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Header */
 .profile-header {
   margin-bottom: 2rem;
   text-align: center;
@@ -25,29 +26,37 @@
   margin-bottom: 1.5rem;
 }
 
-.profile-header input,
-.profile-header textarea {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+/* Tabs */
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #ddd;
 }
 
-.profile-header button {
-  background: #708238; /* olive green */
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
+.profile-tab {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
+  background: none;
+  border: none;
+  outline: none;
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+  color: #555;
 }
 
-.profile-header button:hover {
-  background: #5a672d; /* darker olive */
+.profile-tab:hover {
+  color: #333;
 }
 
+.profile-tab.active {
+  color: #708238; /* olive green */
+  border-bottom: 3px solid #708238;
+  font-weight: bold;
+}
+
+/* Book Lists Section */
 .list {
   margin-bottom: 2.5rem;
 }
@@ -115,4 +124,31 @@
   background-color: #5a672d;
 }
 
-  
+/* Friends Section */
+.friends {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.friends h2 {
+  font-size: 1.4rem;
+  color: #708238;
+  margin-bottom: 1rem;
+}
+
+.friends ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.friends li {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
