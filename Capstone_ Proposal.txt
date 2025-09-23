@@ -1,0 +1,62 @@
+﻿Project Proposal: Book tracking app for readers (Plotline)
+
+
+Tech Stack:
+* Frontend:
+   * React.js – For building a dynamic and responsive UI
+   * React Router – For client-side routing
+   * Axios – For making HTTP requests to the backend
+   * Vite – For blazing fast dev server and builds
+* Backend: 
+   * Node.js + Express.js – For the handling of API requests and integration with the database.
+* Database: 
+   * PostgreSQL – Relational database for storing books, users, reviews, etc.
+   * pg – PostgreSQL client for Node.js
+* Content Management: 
+   * OpenSource API- https://openlibrary.org/developers/api
+* Hosting:
+   * Vercel- for back end
+   * Netlify- for Frontend
+
+
+Project Focus:
+The focus of the project will be on the frontend UI, however, still with work going into the backend. The goal is to create a cohesive UI and UX for the user across both web and mobile applications.
+
+
+Project Type:
+* Website: Accessible through a web browser
+
+
+Project Goal:
+The goal of this project is to provide people with a sense of community within the literary world that acts like a social media platform. This will help connect readers regarding books, as well as help users keep track of all books they have read or are currently reading.
+
+
+User Demographic:
+Primary users of the app will be anyone who reads or wants to get back into reading. Users can be anyone who reads 1 book a year or 1000+.
+
+
+Data and API:
+* Data: The content will include books and authors, genres, cover image, publisher, etc.
+* Data Collection: content will be manages using the open library API.
+* API: Open Library API will retrieve the content that includes title, author, genre, IBSN, etc.
+Project Approach:
+1. Database Schema: 
+   * Content: User posts, reviews, books, author, genre, titles, summary, to read list, read, and currently reading.
+   * Categories: Stores categories regarding to be read, want to read, and currently reading, along with book genres.
+2. Potential API Issues: 
+   * Missing titles: Books and authors could potentially not be linked in the API, not letting users keep track of all of the books they are reading or want to read.
+   * Consistency: making sure all of the data is consistent across all platforms.
+   * Limit on the use
+   * Could be a payment issue in the future.
+3. Functionality: 
+   * Content display: Users can view their books in their lists, as well as other users lists if they choose to make them public, along with various novels and authors that are on the API.
+   * Search: Users are able to search for specific books, authors, or genres.
+   * Posting: Able to create reviews on the books that they have completed out of 5.
+4. Sensitive Information: 
+   * None will be collected from any user.
+5. User Flow:
+   * Homepage: friends updates regarding added books to their lists along with their reviews.
+   * Profile: Shows their lists and all posts made by them.
+   * Search: Users can search for a specific book or author.
+6. Stretch Goals:
+   * Integrate a “trending” page to give users an update on the trending books in all genres (NYT Best Seller list???)
