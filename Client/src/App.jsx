@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import About from "./pages/About.jsx";
 import Search from "./pages/Search.jsx";
+import AddFriends from "./pages/AddFriends.jsx";
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -26,6 +27,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />
             <Route path="/search" element={<Search />} />
+            
             <Route
               path="/profile"
               element={
@@ -34,6 +36,25 @@ function App() {
                 </PrivateRoute>
               }
             />
+
+            <Route 
+              path="/profile/:id"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+
+            <Route 
+              path="/add-friends"
+              element={
+                <PrivateRoute>
+                  <AddFriends />
+                </PrivateRoute>
+              }
+            />
+            
           </Routes>
         </div>
       </Router>

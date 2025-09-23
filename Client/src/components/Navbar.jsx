@@ -16,10 +16,11 @@ function Navbar() {
       </div>
       <div className="nav-right">
         <Link to="/about">About</Link>
-        <Link to="/search">Search</Link> {/* ✅ always visible */}
+        <Link to="/search">Search</Link> 
         {user ? (
           <>
             <Link to="/profile">Profile</Link>
+            <Link to="/add-friends">Add Friends</Link> 
             <button onClick={logout}>Logout</button>
           </>
         ) : (
@@ -34,7 +35,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
-
-
