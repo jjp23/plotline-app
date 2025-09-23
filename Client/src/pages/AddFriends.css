@@ -1,0 +1,101 @@
+.add-friends {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .add-friends h1 {
+    font-family: "Georgia", serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #708238; /* olive */
+  }
+  
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    min-width: 400px;
+    padding: 0.9rem 1.2rem;
+    font-size: 1.1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s ease;
+  }
+  
+  .search-bar input:focus {
+    border-color: #708238;
+  }
+  
+  .search-bar button {
+    padding: 0.9rem 1.5rem;
+    font-size: 1.1rem;
+    background: #708238;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .search-bar button:hover {
+    background: #5a672d;
+  }
+  
+  .results-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .results-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  
+  .results-list li span {
+    font-size: 1.05rem;
+    color: #333;
+  }
+  
+  .results-list button {
+    background-color: #708238;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+  }
+  
+  .results-list button:hover {
+    background-color: #5a672d;
+  }
+  
+  .add-friends p {
+    margin-top: 1rem;
+    color: #555;
+    font-size: 1rem;
+  }
+  

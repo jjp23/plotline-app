@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import profileRoutes from "./routes/profile.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -36,6 +37,7 @@ app.use(async (req, res, next) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Backend is running 🚀" });

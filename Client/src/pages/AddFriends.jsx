@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AddFriends.css";
 
 function AddFriends() {
   const [query, setQuery] = useState("");
