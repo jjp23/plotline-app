@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function AddFriends() {
   const [query, setQuery] = useState("");
