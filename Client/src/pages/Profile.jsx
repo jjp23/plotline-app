@@ -15,7 +15,7 @@ function Profile() {
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
 
-  const API_URL = import.meta.env.VITE_API_URL || "https://plotline-app.vercel.app/api";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     async function fetchProfile() {
