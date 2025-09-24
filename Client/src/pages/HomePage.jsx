@@ -8,7 +8,6 @@ function HomePage() {
   const [trendingBooks, setTrendingBooks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Fetch random featured book
   useEffect(() => {
     async function fetchRandomBook() {
       try {
@@ -56,7 +55,6 @@ function HomePage() {
     fetchRandomBook();
   }, []);
 
-  // Fetch trending books row
   useEffect(() => {
     async function fetchTrendingBooks() {
       try {
@@ -72,7 +70,6 @@ function HomePage() {
     fetchTrendingBooks();
   }, []);
 
-  // Carousel handlers
   const nextBook = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === trendingBooks.length - 1 ? 0 : prevIndex + 1

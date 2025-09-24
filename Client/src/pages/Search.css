@@ -18,12 +18,12 @@
   align-items: center;
   gap: 1rem;
   margin: 2rem auto 3rem auto;
-  max-width: 900px; /* make it wider */
+  max-width: 900px;
 }
 
 .search-form input {
   flex: 1;
-  min-width: 500px;   /* ensure longer bar */
+  min-width: 500px;  
   padding: 0.9rem 1.2rem;
   font-size: 1.1rem;
   border: 1px solid #ccc;
@@ -33,7 +33,7 @@
 }
 
 .search-form input:focus {
-  border-color: #708238; /* olive */
+  border-color: #708238; 
 }
 
 .search-form button {

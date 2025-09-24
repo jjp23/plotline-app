@@ -131,7 +131,7 @@ function Profile() {
         <p>{profileData.email}</p>
       </div>
 
-      {/* 🔖 Tabs */}
+      {/* Tabs */}
       <div className="profile-tabs">
         <button
           className={`profile-tab ${activeTab === "books" ? "active" : ""}`}
@@ -147,7 +147,7 @@ function Profile() {
         </button>
       </div>
 
-      {/* 📚 Books Tab */}
+      {/* Books Tab */}
       {activeTab === "books" && (
         <>
           {[
@@ -181,7 +181,7 @@ function Profile() {
                         </div>
                       )}
 
-                      {/* 📖 Reviews only for Finished list */}
+                      {/* Reviews only for Finished list */}
                       {from === "finished" && (
                         <div className="review-section">
                           {/* Display saved review */}
@@ -234,7 +234,7 @@ function Profile() {
         </>
       )}
 
-      {/* 👥 Friends Tab */}
+      {/* Friends Tab */}
       {activeTab === "friends" && (
         <div className="friends">
           <h2>Friends</h2>

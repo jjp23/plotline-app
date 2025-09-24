@@ -17,7 +17,6 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// 🔎 Search users by name or email
 router.get("/search", authMiddleware, async (req, res) => {
   try {
     const query = req.query.query;

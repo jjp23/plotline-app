@@ -49,7 +49,7 @@
 }
 
 .profile-tab.active {
-  color: #708238; /* olive green */
+  color: #708238; 
   border-bottom: 3px solid #708238;
   font-weight: bold;
 }

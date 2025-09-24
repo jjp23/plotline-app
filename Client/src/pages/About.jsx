@@ -12,7 +12,7 @@ function About() {
       </p>
       <p>
         While exploring existing book tracking sites, I felt they didn’t fully
-        meet my needs as a reader. Plotline is my answer — a simple, clean, and
+        meet my needs as a reader. Plotline is my answer. A simple, clean, and
         customizable way to track what you’re reading, what you want to read, and
         what you’ve finished.
       </p>
