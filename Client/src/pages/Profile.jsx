@@ -22,22 +22,33 @@ function Profile() {
       try {
         const token = localStorage.getItem("token");
         const endpoint = id ? `${API_URL}/profile/${id}/profile` : `${API_URL}/profile`;
+
+        console.log("🔎 VITE_API_URL:", API_URL);
+        console.log("🔎 Fetching endpoint:", endpoint);
+        console.log("🔎 Using token:", token ? "present" : "MISSING");
+  
         const res = await fetch(endpoint, {
           headers: { Authorization: `Bearer ${token}` },
         });
+  
+        console.log("🔎 Response status:", res.status);
+  
         const data = await res.json();
         if (res.ok) {
           setProfileData(data);
+        } else {
+          console.error("❌ Profile fetch failed:", data);
         }
       } catch (err) {
-        console.error("Error fetching profile:", err);
+        console.error("❌ Error fetching profile:", err);
       } finally {
         setLoading(false);
       }
     }
-
+  
     if (user) fetchProfile();
   }, [user, id]);
+  
 
   async function saveProfile(updatedData) {
     if (id) return;
